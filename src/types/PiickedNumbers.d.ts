@@ -1,0 +1,1 @@
+type PickedNumbers = [number, number, number, number, number, number];

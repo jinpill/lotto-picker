@@ -1,0 +1,1 @@
+type Numb = number | `${number}`;
