@@ -15,6 +15,10 @@ const Container = styled.div`
     position: sticky;
     bottom: 0;
 
+    @media all and (max-width: 480px) {
+        height: auto;
+    }
+
     > * {
         flex: none;
     }

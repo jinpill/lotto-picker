@@ -9,6 +9,7 @@ const Container = styled.div`
 
     @media all and (max-width: 480px) {
         width: 100%;
+        height: 50px;
     }
 
     > div {

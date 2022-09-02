@@ -27,6 +27,7 @@ const Container = styled.button`
 
     @media all and (max-width: 480px) {
         width: 0px;
+        height: 50px;
         flex: 1 1 0px;
     }
 
