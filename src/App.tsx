@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import Header from "./components/Header";
 import Contents from "./components/Contents";
@@ -9,9 +9,16 @@ import Game from "./components/Game";
 import "./common.css";
 
 const App = () => {
-    const [picks, setPicks] = useState<PickedNumbers[]>([]);
+    interface IGame {
+        id: number,
+        timestamp: Date,
+        numbers: PickedNumbers
+    }
 
-    const pickNumbers = (): PickedNumbers => {
+    const [picks, setPicks] = useState<IGame[]>([]);
+    const [lastId, setLastId] = useState<number>(0);
+
+    const pickNumbers = () => {
         const results: number[] = [];
         const targets = Array.from(
             { length: 45 },
@@ -25,26 +32,44 @@ const App = () => {
         }
 
         results.sort((a, b) => a - b);
-        return results as PickedNumbers;
+        setPicks(prev => [...prev, {
+            id: lastId,
+            timestamp: new Date(),
+            numbers: results as PickedNumbers
+        }]);
+        setLastId(prev => prev + 1);
     }
 
-    useEffect(() => {
-        const GAMES = 5;
-        const nextPicks: PickedNumbers[] = [];
-
+    const handleGetNumbers = () => {
+        const GAMES = 1;
         for (let i = 0; i < GAMES; i++) {
-            nextPicks.push(pickNumbers());
+            pickNumbers()
         }
+    }
 
-        setPicks(nextPicks);
-    }, []);
+    const handleDeleteClick = (id: number) => {
+        setPicks(prev => {
+            const targetId = prev.findIndex(obj => obj.id === id);
+            const nextPicks = [...prev];
+            nextPicks.splice(targetId, 1);
+            return nextPicks;
+        });
+    }
 
     return (
         <React.Fragment>
             <Header />
             <Contents>
-                {picks.map((pickedNumbers, i) => (
-                    <Game key={i} index={i} numbers={pickedNumbers} />
+                <button onClick={handleGetNumbers}>추가하기</button>
+                {picks.map(({ id, timestamp, numbers }, i) => (
+                    <Game
+                        key={id}
+                        index={i}
+                        id={id}
+                        timestamp={timestamp}
+                        numbers={numbers}
+                        onDelete={handleDeleteClick}
+                    />
                 ))}
             </Contents>
             <Footer />

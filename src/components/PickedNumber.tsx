@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 const Container = styled.div`
-    width: 64px;
-    height: 64px;
+    width: 40px;
+    height: 40px;
 
     flex: none;
     display: flex;
@@ -13,29 +13,31 @@ const Container = styled.div`
     position: relative;
 
     border-radius: 50%;
-    border: 3px solid rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(0, 0, 0, 0.1);
     background-color: ${(props: {
         color: string
     }) => "#" + props.color};
 
     color: rgba(0, 0, 0, 0.5);
-    font-size: 24px;
+    font-size: 16px;
     font-weight: bold;
     user-select: none;
 
     &::after {
-        width: 20px;
-        height: 14px;
+        width: 32%;
+        height: 22%;
 
         content: "";
 
         position: absolute;
         top: 0;
         right: 0;
-        transform: translate(-7px, 7px) rotate(45deg);
+        transform: translate(-50%, 50%) rotate(45deg);
 
         border-radius: 50%;
-        background-color: rgba(255, 255, 255, 0.5);
+        background-color: white;
+
+        filter: blur(3px);
     }
 `;
 
