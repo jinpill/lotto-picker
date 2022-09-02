@@ -7,6 +7,8 @@ const Contents = styled.main`
     align-items: center;
     padding: 32px 20px;
 
+    position: relative;
+
     background-color: #f7f7f7;
 
     overflow-y: auto;

@@ -3,12 +3,30 @@ import styled from "styled-components";
 import PickedNumber from "./PickedNumber";
 
 const Container = styled.div`
-    display: flex;
-    align-items: center;
-    gap: 16px;
+    padding: 0 20px;
+
+    @keyframes appearance {
+        from {
+            transform: translate(-100%);
+        }
+
+        to {
+            transform: translateX(0%);
+        }
+    }
+
+    animation: appearance 1s ease-in-out;
 
     & + & {
-        margin-top: 32px;
+        margin-top: 16px;
+        padding-top: 16px;
+        border-top: 1px solid #e8e8e8;
+    }
+
+    > div {
+        display: flex;
+        align-items: center;
+        gap: 16px;
     }
 `;
 
@@ -101,18 +119,20 @@ const Game = (props: {
 
     return (
         <Container>
-            <Heading>
-                <Title>게임 {props.index + 1}</Title>
-                <TimeStamp>{getTimeStamp(props.timestamp)}</TimeStamp>
-            </Heading>
-            <Numbers>
-                {props.numbers.map(number => (
-                    <li key={number}>
-                        <PickedNumber value={number} />
-                    </li>
-                ))}
-            </Numbers>
-            <Deleter onClick={handleDelete} />
+            <div>
+                <Heading>
+                    <Title>게임 {props.index + 1}</Title>
+                    <TimeStamp>{getTimeStamp(props.timestamp)}</TimeStamp>
+                </Heading>
+                <Numbers>
+                    {props.numbers.map(number => (
+                        <li key={number}>
+                            <PickedNumber value={number} />
+                        </li>
+                    ))}
+                </Numbers>
+                <Deleter onClick={handleDelete} />
+            </div>
         </Container>
     );
 }
