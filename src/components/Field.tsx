@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 const Container = styled.div`
     width: 160px;
-    height: 40px;
 
     display: flex;
     flex-direction: column;
@@ -13,7 +12,7 @@ const Container = styled.div`
     }
 
     > div {
-        height: 2px;
+        height: 3px;
         position: relative;
 
         &:last-child {

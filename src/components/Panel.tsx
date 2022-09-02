@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const Container = styled.div`
     width: 100%;
+    height: 50px;
 
     display: flex;
     flex-direction: row;
@@ -9,7 +10,6 @@ const Container = styled.div`
     flex-wrap: wrap;
     gap: 16px;
     margin-top: 32px;
-    padding: 0 20px;
     box-sizing: border-box;
 
     position: sticky;

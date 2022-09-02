@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Contents from "./components/Contents";
 import Footer from "./components/Footer";
 
+import Empty from "./components/Empty";
 import Games from "./components/Games";
 import Game from "./components/Game";
 import Panel from "./components/Panel";
@@ -80,18 +81,22 @@ const App = () => {
         <React.Fragment>
             <Header />
             <Contents>
-                <Games>
-                    {picks.map(({ id, timestamp, numbers }, i) => (
-                        <Game
-                            key={id}
-                            index={i}
-                            id={id}
-                            timestamp={timestamp}
-                            numbers={numbers}
-                            onDelete={handleDeleteClick}
-                        />
-                    ))}
-                </Games>
+                {picks.length > 0 ? (
+                    <Games>
+                        {picks.map(({ id, timestamp, numbers }, i) => (
+                            <Game
+                                key={id}
+                                index={i}
+                                id={id}
+                                timestamp={timestamp}
+                                numbers={numbers}
+                                onDelete={handleDeleteClick}
+                            />
+                        ))}
+                    </Games>
+                ) : (
+                    <Empty />
+                )}
                 <Panel>
                     <Field
                         value={String(count ?? "")}
