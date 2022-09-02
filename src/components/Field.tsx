@@ -8,6 +8,10 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
 
+    @media all and (max-width: 480px) {
+        width: 100%;
+    }
+
     > div {
         height: 2px;
         position: relative;

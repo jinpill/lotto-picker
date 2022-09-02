@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const Container = styled.button`
+    width: 100px;
     height: 40px;
 
     display: flex;
@@ -23,6 +24,11 @@ const Container = styled.button`
 
     &:focus {
         outline: 3px solid rgba(30, 144, 255, 0.3);
+    }
+
+    @media all and (max-width: 480px) {
+        width: 0px;
+        flex: 1 1 0px;
     }
 
     * {

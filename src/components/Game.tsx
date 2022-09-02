@@ -7,10 +7,12 @@ const Container = styled.div`
 
     @keyframes appearance {
         from {
+            opacity: 0.5;
             transform: translate(-100%);
         }
 
         to {
+            opacity: 1;
             transform: translateX(0%);
         }
     }
@@ -25,7 +27,9 @@ const Container = styled.div`
 
     > div {
         display: flex;
+        justify-content: space-between;
         align-items: center;
+        flex-wrap: wrap;
         gap: 16px;
     }
 `;
@@ -49,6 +53,15 @@ const TimeStamp = styled.p`
 const Numbers = styled.ol`
     display: flex;
     gap: 16px;
+
+    @media all and (max-width: 560px) {
+        width: 100%;
+
+        flex: none;
+        order: 2;
+        justify-content: space-between;
+        gap: 8px;
+    }
 `;
 
 const Deleter = styled.button`
